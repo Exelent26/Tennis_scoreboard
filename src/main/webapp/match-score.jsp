@@ -25,7 +25,7 @@
         <div>
             <nav class="nav-links">
                 <a class="nav-link" href="index.html">Home</a>
-                <a class="nav-link" href="matches.html">Matches</a>
+                <a class="nav-link" href="matches.jsp">Matches</a>
             </nav>
         </div>
     </section>

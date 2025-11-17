@@ -1,17 +1,22 @@
 package model;
 
+import jakarta.persistence.*;
 import lombok.*;
 
-import java.util.UUID;
 
 
 @Data
-@AllArgsConstructor
 @NoArgsConstructor
+@AllArgsConstructor
 @Builder
-@Getter
-
+@Entity
+@Table(name ="Players")
 public class Player {
-    private UUID id;
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "ID")
+    private Long id;
+
+    @Column(name = "Name", nullable = false, length = 120, unique = true)
     private String name;
 }

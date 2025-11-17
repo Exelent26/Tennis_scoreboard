@@ -1,0 +1,40 @@
+public Optional<Winner> pointWonBy(Winner winner) {
+
+        if (winner == Winner.PLAYER_ONE) {
+            if (playerOnePoints == Point.LOVE) { // 0 -> 15
+                playerOnePoints = Point.FIFTEEN;
+            } else if (playerOnePoints == Point.FIFTEEN) { // 15 -> 30
+                playerOnePoints = Point.THIRTY;
+            } else if (playerOnePoints == Point.THIRTY) { // 30 -> 40
+                playerOnePoints = Point.FORTY;
+            } else if (playerOnePoints == Point.FORTY && playerTwoPoints != Point.FORTY && playerTwoPoints != Point.ADVANTAGE) { // 40 -> победа
+                //todo тут мы увеличиваем количество геймов в сете, потому что первый игрок победил
+                return Optional.of(Winner.PLAYER_ONE);
+            } else if (playerOnePoints == Point.FORTY && playerTwoPoints == Point.FORTY) { // 40 -> AD
+                playerOnePoints = Point.ADVANTAGE;
+            } else if (playerOnePoints == Point.ADVANTAGE) { // AD -> победа
+                //todo тут у нас игрок выигрывает гейм при его преимуществе AD
+                return Optional.of(Winner.PLAYER_ONE);
+            } else if (playerOnePoints == Point.FORTY && playerTwoPoints == Point.ADVANTAGE) { // 40 - AD -> 40-40
+                playerTwoPoints = Point.FORTY;
+            }
+
+        } else if (winner == Winner.PLAYER_TWO) {
+            if (playerTwoPoints == Point.LOVE) { // 0 -> 15
+                playerTwoPoints = Point.FIFTEEN;
+            } else if (playerTwoPoints == Point.FIFTEEN) { // 15 -> 30
+                playerTwoPoints = Point.THIRTY;
+            } else if (playerTwoPoints == Point.THIRTY) { // 30 -> 40
+                playerTwoPoints = Point.FORTY;
+            } else if (playerTwoPoints == Point.FORTY && playerOnePoints != Point.FORTY && playerOnePoints != Point.ADVANTAGE) { // 40 -> победа
+                return Optional.of(Winner.PLAYER_TWO);
+            } else if (playerOnePoints == Point.FORTY && playerTwoPoints == Point.FORTY) { // 40 - 40 -> AD - 40
+                playerTwoPoints = Point.ADVANTAGE;
+            } else if (playerTwoPoints == Point.ADVANTAGE) { // AD -> победа
+                return Optional.of(Winner.PLAYER_TWO);
+            } else if (playerTwoPoints == Point.FORTY && playerOnePoints == Point.ADVANTAGE) { // 40 - AD -> 40 -40
+                playerOnePoints = Point.FORTY;
+            }
+        }
+        return Optional.empty();
+    }

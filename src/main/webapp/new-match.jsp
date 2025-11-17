@@ -33,13 +33,23 @@
             <h1>Start new match</h1>
             <div class="new-match-image"></div>
             <div class="form-container center">
-                <form method="post" action="#">
-                    <p style="color: red;">Sample error message</p>
+                <form method="post" action="/new-match">
+                    <%
+                        String errorMessage = (String) request.getAttribute("errorMessage");
+                        if (errorMessage != null) {
+                    %>
+                    <p style="color:red; font-weight:bold;">
+                        <%= errorMessage %>
+                    </p>
+                    <%
+                        }
+                    %>
+
                     <label class="label-player" for="playerOne">Player one</label>
-                    <input class="input-player" placeholder="Name" type="text" required title="Enter a name">
+                    <input id ="playerOne" name="playerOne" class="input-player" placeholder="Name" type="text" required title="Enter a name">
                     <label class="label-player" for="playerTwo">Player two</label>
-                    <input class="input-player" placeholder="Name" type="text" required title="Enter a name">
-                    <input class="form-button" type="submit" value="Start">
+                    <input class="input-player" name = "playerTwo" placeholder="Name" type="text" required title="Enter a name">
+                    <input id ="playerTwo" class="form-button" type="submit" value="Start">
                 </form>
             </div>
         </div>
