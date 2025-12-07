@@ -4,7 +4,7 @@ import dao.PlayerDao;
 import exception.ValidationException;
 import lombok.Getter;
 import model.Player;
-import util.PlayerValidator;
+import util.DataValidator;
 
 import java.util.Optional;
 
@@ -17,7 +17,7 @@ public class PlayerService {
     PlayerDao playerDao = PlayerDao.getINSTANCE();
 
     public Player createPlayer(String name) {
-        if(PlayerValidator.isPlayerNameValid(name)) {
+        if(DataValidator.isPlayerNameValid(name)) {
 
             Optional<Player> player = playerDao.saveOrGetExisting(name);
             if(player.isPresent()) {
@@ -28,7 +28,7 @@ public class PlayerService {
     }
 
     public Player getPlayerByName(String name) {
-        if(PlayerValidator.isPlayerNameValid(name)) {
+        if(DataValidator.isPlayerNameValid(name)) {
             Optional<Player> playerByName = playerDao.getPlayerByName(name);
             if(playerByName.isPresent()) {
                 return playerByName.get();
@@ -39,7 +39,7 @@ public class PlayerService {
     }
 
     public Player getPlayerById(Long id) {
-        if (PlayerValidator.isIdValid(id)) {
+        if (DataValidator.isPlayerIdValid(id)) {
             Optional<Player> playerById = playerDao.getPlayerById(id);
             if(playerById.isPresent()) {
                 return playerById.get();

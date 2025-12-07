@@ -8,7 +8,7 @@ public enum Point {
     FIFTEEN(15),
     THIRTY(30),
     FORTY(40),
-    ADVANTAGE(-1); // например, -1 для обозначения "AD"
+    ADVANTAGE(-1);
 
     @Getter
     private final int value;
@@ -17,13 +17,27 @@ public enum Point {
         this.value = value;
     }
 
-    public static Point nextPoints(Point correctPoint) {
-        Point[] points = Point.values();
-        int ordinal = correctPoint.ordinal();
-        int nextOrdinal = (ordinal + 1) % points.length;
-        return points[nextOrdinal];
+
+    @Override
+    public String toString() {
+        return switch (this) {
+            case LOVE -> "0";
+            case FIFTEEN -> "15";
+            case THIRTY -> "30";
+            case FORTY -> "40";
+            case ADVANTAGE -> "AD";
+        };
     }
 
+    public String getDisplayValue() {
+        return switch (this) {
+            case LOVE -> "0";
+            case FIFTEEN -> "15";
+            case THIRTY -> "30";
+            case FORTY -> "40";
+            case ADVANTAGE -> "AD";
+        };
 
 
+    }
 }

@@ -249,7 +249,7 @@ footer {
 .table {
     width: 100%;
     border-collapse: collapse;
-    text-align: left;
+    text-align: center;
 }
 
 .table tr {
@@ -259,6 +259,7 @@ footer {
 .table th {
     padding: 5px;
     border-bottom: 1px solid #dddddd;
+    text-align: center;
 }
 
 .table tr:first-child {
@@ -268,7 +269,8 @@ footer {
 
 .result th {
     font-weight: 400;
-    padding-left: 10px;
+    padding-left: 5px ;
+    text-align: center;
 }
 
 .player1, .player2 {
@@ -284,8 +286,14 @@ footer {
     font-style: normal;
 }
 
-.table-text + .table-text {
+.table-text{
     text-align: center;
+}
+
+.winner-title {
+    text-align: center;
+    margin-top: 20px;
+    margin-bottom: 10px;
 }
 
 .score-btn {

@@ -1,7 +1,9 @@
 package hibernate;
 
 import lombok.Getter;
+import model.Match;
 import model.Player;
+import model.score.Game;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.cfg.Configuration;
@@ -18,7 +20,7 @@ public class HibernateRunner {
             try{
                 Configuration configuration = new Configuration();
                 configuration.addAnnotatedClass(Player.class);
-
+                configuration.addAnnotatedClass(Match.class);
                 return configuration.buildSessionFactory();
             }catch (Exception e){
                 throw new RuntimeException("Ошибка инициализации Hibernate", e);

@@ -17,8 +17,14 @@ public class Game {
                 LOVE,
                 LOVE
         };
+    }
 
+    public Point getPlayerOneGameScore(){
+        return points[0];
+    }
 
+    public Point getPlayerTwoGameScore(){
+        return points[1];
     }
 
 
@@ -47,16 +53,14 @@ public class Game {
                     return Optional.of(winnerIndex == 0 ? Winner.PLAYER_ONE : Winner.PLAYER_TWO);
                 }
                 }
+                case ADVANTAGE -> {
+                    return Optional.of(winnerIndex == 0 ? Winner.PLAYER_ONE : Winner.PLAYER_TWO);
+                }
             }
 
         return Optional.empty();
     }
 
-    private void resetPoints() {
-        points[0] = Point.LOVE;
-        points[1] = Point.LOVE;
-
-    }
 }
 
 

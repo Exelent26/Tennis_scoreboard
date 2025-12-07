@@ -31,6 +31,17 @@ public class MatchScore {
 
     }
 
+
+    public int getSetsScorePlayerOne(){
+        return setsScore[0];
+    }
+    public int getSetsScorePlayerTwo(){
+        return setsScore[1];
+    }
+    public String getWinnerOfMatchOrNull(){
+        return winnerOfMatch.toString();
+    }
+
     public int[] getSetsScore() {
         return Arrays.copyOf(setsScore, setsScore.length);
     }

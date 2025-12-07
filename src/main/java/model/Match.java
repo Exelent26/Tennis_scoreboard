@@ -4,35 +4,32 @@ import jakarta.persistence.*;
 import lombok.*;
 
 @Data
-@Getter
 @Builder
 @AllArgsConstructor
 @NoArgsConstructor
 @Entity
-@Table(name = "Matches")
+@Table(name = "matches")
 public class Match {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "ID")
-    @Getter
     private Long id;
 
     @ManyToOne
-    @JoinColumn(name = "player_one_id")
-    private Player playerOneID;
+    @JoinColumn(name = "player_one")
+    private Player playerOne;
 
     @ManyToOne
-    @JoinColumn(name = "player_two_id")
-    private Player playerTwoID;
+    @JoinColumn(name = "player_two")
+    private Player playerTwo;
 
 
 
     @ManyToOne
     @JoinColumn(name = "winner_id")
-    private Player winnerID;
+    private Player winner;
 
     public Match(Player playerOne, Player playerTwo) {
-        this.playerOneID = playerOne;
-        this.playerTwoID = playerTwo;
+        this.playerOne = playerOne;
+        this.playerTwo = playerTwo;
     }
 }

@@ -8,11 +8,30 @@ import java.util.Optional;
 public class Set {
     @Getter
     private int[] games;
+
     @Getter
     private boolean tieBreakActive;
+
+
     @Getter
     private int[] tieBreakScore;
+    @Getter
     private Game game;
+
+    public int getGamesPlayerOne(){
+        return games[0];
+    }
+    public int getGamesPlayerTwo(){
+        return games[1];
+    }
+
+    public int getTieBreakScorePlayerOne(){
+        return tieBreakScore[0];
+    }
+
+    public int getTieBreakScorePlayerTwo(){
+        return tieBreakScore[1];
+    }
 
     public Set() {
         this.games = new int[]{
